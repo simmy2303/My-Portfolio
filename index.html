@@ -17,7 +17,7 @@
       --glass:rgba(0,0,0,.65);--border:rgba(100,255,218,.25);--blur:20px
     }
     html,body{height:100%}
-    body{font-family:'Segoe UI';color:#fff;background:#000;overflow-x:hidden;line-height:1.6;cursor:none}
+    body{font-family:'Poppins', sans-serif;color:#fff;background:#000;overflow-x:hidden;line-height:1.6;cursor:none}
       a {
       text-decoration: none;   /* removes underline */
       color: rgb(255, 255, 255);            /* or whatever color you want */
@@ -42,7 +42,7 @@
     header{position:fixed;inset:0 auto auto 0;right:0;z-index:1000;background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,.45) 60%,transparent);backdrop-filter:blur(var(--blur));border-bottom:1px solid var(--border)}
     nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
     .logo{font-weight:700;font-size:1.5rem;color:var(--mint);text-shadow:0 0 24px rgba(100,255,218,.5)}
-    .nav-links{display:flex;list-style:none;gap:1rem}
+    .nav-links{display:flex;list-style:none;gap:0.7rem}
     .nav-links a{color:#fff;text-decoration:none;font-weight:500;position:relative;padding:.25rem .4rem;transition:.25s ease}
     .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--mint),var(--pink));transition:.35s ease;box-shadow:0 0 8px rgba(100,255,218,.6)}
     .nav-links a:hover{color:var(--mint);text-shadow:0 0 10px rgba(100,255,218,.8)}
@@ -234,8 +234,9 @@
     rgba(100, 255, 218, 0.18),
     rgba(255, 107, 107, 0.18)
   );
+  border-radius: 16px;
 }
-.project-title { color: var(--mint); font-weight: 700; }
+.project-title { color: var(--mint); font-weight: 700;}
 .project-date  { color: #cfcfcf; font-size: .9rem; }
 .project-body  { padding: 1rem; }
 .project-tech  { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .6rem; }
@@ -412,10 +413,10 @@
 </div>
 
     <div class="hero-content">
-      <h1>simran kaur chahal</h1>
-      <p class="subtitle">computer science graduate | data science and AI explorer</p>
-      <div class="quote">"innovation distinguishes between a leader and a follower." — Steve Jobs</div>
-      <p><bold>open to full time roles in data science, AI, and software engineering</bold></p>
+      <h1>Simran Kaur Chahal</h1>
+      <p class="subtitle">Computer Science Graduate | Data Science & AI/ML Enthusiast</p>
+      <div class="quote">"Innovation distinguishes between a <strong>leader</strong> and a follower." — Steve Jobs</div>
+      <p><bold>Open to full time roles in Data Science, Engineering, Analystics, AI, and Software Engineering</bold></p>
       <br>
       <a href="#projects" class="cta-button">explore projects</a>
     </div>
@@ -641,7 +642,9 @@
               <span class="tag">Model Training & Fine-Tuning</span><span class="tag">TensorFlow</span>
               <span class="tag">React Native</span><span class="tag">FastAPI</span>
             </div>
-            <p>Integrated Deep Learning-based System for Handwritten Text Recognition and Speech Output (Snap 2Speech). CRNN reached 98% character accuracy on a custom dataset; TFLite pruning + quantization reduced model size by ~40%.</p>
+<p>
+  <strong>Snap2Speech</strong> is a deep learning–driven mobile application that combines a CRNN model for handwritten text recognition with text-to-speech to aid visually impaired users. The system achieved 98% character-level accuracy on a custom dataset and employs preprocessing techniques such as letterboxing and contour-based cropping to ensure robust, real-time performance.
+</p>
           </div>
         </div>
         <div class="project-media">
@@ -663,7 +666,7 @@
               <span class="tag">Pandas</span><span class="tag">scikit learn</span><span class="tag">XGBoost</span>
               <span class="tag">Matplotlib</span><span class="tag">KNN</span><span class="tag">CNN</span>
             </div>
-            <p>Compared RF, XGBoost, and ARIMA with feature importance analysis; best model achieved MAPE &lt; 10%.</p>
+            <p>This project applied data mining techniques to predict daily COVID-19 cases using regional, demographic, and vaccination data. By leveraging regression and time-series models, the study provided accurate forecasts to support healthcare resource planning and public health decision-making.</p>
           </div>
         </div>
         <div class="project-media">
@@ -689,62 +692,6 @@
           <img src="hangman.png" alt="Hangman game UI" class="project-image">
         </div></a>
       </article>
-
-      <!-- Budgeting Tracker -->
-      <article class="card project" data-tags="app viz">
-        <div class="project-content">
-          <div class="project-head">
-            <a href="https://github.com/simmy2303/Budgeting-Tracker" title="Click to see project" target="_blank" rel="noopener">
-              <div class="project-title">Budgeting Tracker</div>
-              <div class="project-date">Mar 2024</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tech"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
-            <p>This Budget Tracker is a simple web app that helps users manage income and expenses with an easy-to-use interface. It dynamically calculates total balance, displays categorized transactions, and provides a clear breakdown of earnings versus spending.<br><br><br><br></p>
-          </div>
-        </div>
-        <div class="project-media">
-          <img src="budget.png" alt="Budgeting tracker dashboard preview" class="project-image">
-        </div>  </a>
-      </article>
-
-      <!-- Weather App -->
-      <article class="card project" data-tags="app">
-        <div class="project-content">
-          <div class="project-head">
-            <a href="https://github.com/simmy2303/Weather-App-API" title="Click to see project" target="_blank" rel="noopener">
-              <div class="project-title">Weather Forecast Application</div>
-              <div class="project-date">Mar 2024</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tech"><span class="tag">HTML</span><span class="tag">CSS</span></div>
-            <p>Front end shell for mobile-first weather display via API.</p>
-          </div>
-        </div>
-        <div class="project-media">
-          <img src="weather.png" alt="Weather app mockup" class="project-image">
-        </div>  </a>
-      </article>
-
-      <!-- To Do -->
-      <article class="card project" data-tags="app">
-        <div class="project-content">
-          <div class="project-head">
-            <a href="https://github.com/simmy2303/To-Do-List" title="Click to see project" target="_blank" rel="noopener">
-              <div class="project-title">To Do List Application</div>
-              <div class="project-date">Feb 2024</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-            <p>Task manager with deadlines and browser state persistence.</p>
-          </div>
-        </div>
-        <div class="project-media">
-          <img src="todo.png" alt="To-do app interface" class="project-image">
-        </div>  </a>
-      </article>
-
-
       <!-- DIP -->
       <article class="card project" data-tags="cv">
         <div class="project-content">
@@ -781,6 +728,61 @@
           <img src="ann.png" alt="Boat racing game screenshot" class="project-image">
         </div>  </a>
       </article>
+      <!-- Budgeting Tracker -->
+      <article class="card project" data-tags="app viz">
+        <div class="project-content">
+          <div class="project-head">
+            <a href="https://github.com/simmy2303/Budgeting-Tracker" title="Click to see project" target="_blank" rel="noopener">
+              <div class="project-title">Budgeting Tracker</div>
+              <div class="project-date">Mar 2024</div>
+          </div>
+          <div class="project-body">
+            <div class="project-tech"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+            <p>This Budget Tracker is a simple web app that helps users manage income and expenses with an easy-to-use interface. It dynamically calculates total balance, displays categorized transactions, and provides a clear breakdown of earnings versus spending.<br><br><br><br></p>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="budget.png" alt="Budgeting tracker dashboard preview" class="project-image">
+        </div>  </a>
+      </article>
+
+      <!-- Weather App -->
+      <article class="card project" data-tags="app">
+        <div class="project-content">
+          <div class="project-head">
+            <a href="https://github.com/simmy2303/Weather-App-API" title="Click to see project" target="_blank" rel="noopener">
+              <div class="project-title">Weather Forecast Application</div>
+              <div class="project-date">Mar 2024</div>
+          </div>
+          <div class="project-body">
+            <div class="project-tech"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+            <p>Front end shell for mobile-first weather display via API.</p>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="weather.png" alt="Weather app mockup" class="project-image">
+        </div>  </a><br><br><br><br><br>
+      </article>
+
+      <!-- To Do -->
+      <article class="card project" data-tags="app">
+        <div class="project-content">
+          <div class="project-head">
+            <a href="https://github.com/simmy2303/To-Do-List" title="Click to see project" target="_blank" rel="noopener">
+              <div class="project-title">To Do List Application</div>
+              <div class="project-date">Feb 2024</div>
+          </div>
+          <div class="project-body">
+            <div class="project-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            <p>Task manager with deadlines and browser state persistence.</p>
+          </div>
+        </div>
+        <div class="project-media">
+          <img src="todo.png" alt="To-do app interface" class="project-image">
+        </div>  </a>
+      </article>
+
+
       <!-- Netflix Clone -->
       <article class="card project" data-tags="app viz">
         <div class="project-content">
