@@ -42,7 +42,7 @@
     header{position:fixed;inset:0 auto auto 0;right:0;z-index:1000;background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,.45) 60%,transparent);backdrop-filter:blur(var(--blur));border-bottom:1px solid var(--border)}
     nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
     .logo{font-weight:700;font-size:1.5rem;color:var(--mint);text-shadow:0 0 24px rgba(100,255,218,.5)}
-    .nav-links{display:flex;list-style:none;gap:1.2rem}
+    .nav-links{display:flex;list-style:none;gap:1rem}
     .nav-links a{color:#fff;text-decoration:none;font-weight:500;position:relative;padding:.25rem .4rem;transition:.25s ease}
     .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:linear-gradient(90deg,var(--mint),var(--pink));transition:.35s ease;box-shadow:0 0 8px rgba(100,255,218,.6)}
     .nav-links a:hover{color:var(--mint);text-shadow:0 0 10px rgba(100,255,218,.8)}
@@ -116,6 +116,95 @@
     .meta{color:#ffadb0;font-size:.92rem;margin-bottom:.35rem}
     .org{color:var(--teal);font-weight:600;margin-bottom:.3rem}
     .title-strong{color:var(--mint);font-weight:700;margin-bottom:.25rem}
+/* --- Extra Photos Slider --- */
+.slider{
+  position: relative;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(100,255,218,.25);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 1rem 3rem;   
+  transition:.25s ease;         /* room for arrows */
+}
+.slider:hover{
+   max-height: 600px;          /* expanded height to show image */
+  transform: scale(1.02);  
+  filter:drop-shadow(0 0 18px rgba(255, 255, 255, 0.4));
+}
+.slider .track{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 0;
+  transform: translateX(0);
+  transition: transform .45s ease;
+}
+
+.slider .slide{
+  position: relative;
+  aspect-ratio: 16/9;               /* compact banner feel */
+  max-height: 320px;                /* keeps it small */
+  overflow: hidden;
+  border-radius: 12px;
+  max-height: 360px;   /* was 320px */
+}
+
+
+
+.slider .slide img{
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+#extra-photos .container {
+  max-width: 650px;   /* smaller than your site’s default 1200px */
+  margin: 0 auto;
+  text-align: center; /* optional: centers the title */
+  margin-top:-120px;
+}
+#extra-photos .slider {
+  max-width: 900px;   /* was 700px */
+  margin: 0 auto;     /* keeps it centered */
+}
+.slider .nav{
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px; line-height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(100,255,218,.5);
+  background: rgba(0,0,0,.55);
+  color: var(--mint);
+  display: grid; place-items: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.slider .nav:hover{ transform: translateY(-50%) scale(1.06); background: rgba(0,0,0,.75); border-color: rgba(100,255,218,.8); }
+.slider .prev{ left: .6rem; }
+.slider .next{ right: .6rem; }
+
+.slider .dots{
+  display: flex; justify-content: center; gap: .4rem;
+  padding: .6rem 0 0.2rem;
+}
+.slider .dots button{
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid rgba(100,255,218,.5);
+  background: transparent;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.slider .dots button.active{
+  background: var(--mint);
+  transform: scale(1.15);
+}
+
+/* mobile tweaks */
+@media (max-width: 768px){
+  .slider{ padding: .5rem 2.2rem; }
+  .slider .slide{ max-height: 220px; aspect-ratio: 16/9; }
+  .slider .nav{ width: 32px; height: 32px; line-height: 32px; }
+}
 
 /* ---------- Projects ---------- */
 .projects-grid {
@@ -235,6 +324,51 @@
       transform: scale(1.15);
       filter: invert(65%) sepia(90%) saturate(500%) hue-rotate(150deg);
     }
+    /* Job Interests */
+    .interest-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.2rem;
+    }
+    .interest{ padding:1.2rem; }
+    .interest .title{
+      color:var(--mint);
+      font-weight:700;
+      margin-bottom:.4rem;
+    }
+    .interest .desc{ color:#cfcfcf; margin-bottom:.7rem; }
+    .interest .stack{ display:flex; flex-wrap:wrap; gap:.5rem; }
+
+    /* chips toggle */
+    #interestChips .chip.active{
+      background:rgba(100,255,218,.28);
+      color:#fff;
+      border-color:rgba(100,255,218,.6);
+}
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+/* make the first card span all columns */
+.pub-grid .featured {
+  grid-column: 1 / -1;    /* take entire row */
+}
+
+/* keep others like square-ish cards */
+.pub-grid .pub {
+  padding: 1.2rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pub { padding: 1.2rem; }
+.pub-title { color: var(--mint); font-weight: 700; margin-bottom: .4rem; }
+.pub-meta { color: #cfcfcf; font-size: .9rem; margin-bottom: .5rem; }
+.pub-authors { color: #aaa; font-size: .9rem; margin-bottom: .6rem; }
 
   </style>
 </head>
@@ -263,7 +397,7 @@
         <li><a href="#home">home</a></li><li><a href="#about">about</a></li>
         <li><a href="#skills">skills</a></li><li><a href="#experience">experience</a></li>
         <li><a href="#education">education</a></li><li><a href="#activities">extracurriculars</a></li>
-        <li><a href="#projects">projects</a></li><li><a href="#awards">awards</a></li>
+        <li><a href="#projects">projects</a></li><li><a href="#interests">interests</a></li><li><a href="#awards">awards</a></li>
         <li><a href="#languages">languages</a></li><li><a href="#publications">publications</a></li>
         <li><a href="#contact">contact</a></li>
       </ul>
@@ -368,19 +502,19 @@
     <div class="container">
       <h2 class="section-title">experience</h2>
       <div class="timeline">
-        <div class="card timeline-item">
+        <div class="card timeline-item"><a href="https://www.maybank.com/en/index.page" title="Click for more Info" target="_blank" rel="noopener">
           <div class="meta">Jan 2025 – Apr 2025</div>
-          <div class="title-strong">program analyst intern</div>
+          <div class="title-strong">Program Analyst - Intern</div>
           <div class="org">Maybank — STO division, Kuala Lumpur</div>
           <p>Leveraged Python and Excel-based data analysis to uncover financial and market insights, enabling data-driven strategies and decisions for Maybank’s senior committees.</p>
-        </div>
+        </div></a>
 
-        <div class="card timeline-item">
+        <div class="card timeline-item"> <a href="https://www.kidocode.com/" title="Click for more Info" target="_blank" rel="noopener">
           <div class="meta">Aug 2019 – Feb 2023</div>
           <div class="title-strong">Coding Assistant</div>
-          <div class="org">Kidocode, kuala lumpur</div>
+          <div class="org">Kidocode, Kuala Lumpur</div>
           <p>Guided students in programming fundamentals and logical problem solving.</p>
-        </div>
+        </div></a>
       </div>
     </div>
   </section>
@@ -421,6 +555,31 @@
       </div>
     </div>
   </section>
+<section id="extra-photos" class="section">
+  <div class="container">
+    <div class="slider" data-autoplay="true" data-interval="2500">
+      <button class="nav prev" aria-label="Previous slide">❮</button>
+
+      <div class="track" id="extraTrack">
+        <!-- Drop your images below (add/remove freely) -->
+        <div class="slide"><img src="echo1.jpg" alt="Echo Media event" loading="lazy"></div>
+        <div class="slide"><img src="echo2.jpg" alt="Echo Media campaign" loading="lazy"></div>
+        <div class="slide"><img src="echo3.jpg" alt="GDSC workshop" loading="lazy"></div>
+        <div class="slide"><img src="echo4.jpg" alt="SPAIR conference" loading="lazy"></div>
+        <div class="slide"><img src="spair.jpeg" alt="Echo Media event" loading="lazy"></div>
+        <div class="slide"><img src="echo5.jpg" alt="Sunway activity" loading="lazy"></div>
+        <div class="slide"><img src="echo6.jpg" alt="Sunway activity" loading="lazy"></div>
+        <div class="slide"><img src="echo7.jpg" alt="Sunway activity" loading="lazy"></div>
+
+
+      </div>
+
+      <button class="nav next" aria-label="Next slide">❯</button>
+
+      <div class="dots" id="extraDots" aria-label="Slide pagination"></div>
+    </div>
+  </div>
+</section>
 
   <!-- Education -->
   <section id="education" class="section">
@@ -711,6 +870,67 @@
   </div>
 </section>
 
+<section id="interests" class="section">
+  <div class="container">
+    <h2 class="section-title">job interests</h2>
+
+    <!-- quick chips (click to highlight) -->
+    <div class="filters" id="interestChips">
+      <button class="chip" data-key="ds">Data Science</button>
+      <button class="chip" data-key="ml">Machine Learning Engineer</button>
+      <button class="chip" data-key="cv">Computer Vision</button>
+      <button class="chip" data-key="se">Software Engineer</button>
+      <button class="chip" data-key="de">Data Engineer</button>
+      <button class="chip" data-key="ai">Applied AI</button>
+    </div>
+
+    <!-- cards -->
+    <div class="interest-grid">
+      <article class="card interest">
+        <div class="title">Data Science</div>
+        <p class="desc">Exploratory analysis, feature engineering, predictive modeling, and clear storytelling with dashboards.</p>
+        <div class="stack"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">XGBoost</span><span class="tag">Power BI</span></div>
+      </article>
+<article class="card interest">
+  <div class="title">Data Engineer</div>
+  <p class="desc">
+    Building robust pipelines to move, clean, and transform large datasets, ensuring they are ready for analysis and machine learning.
+  </p>
+  <div class="stack">
+    <span class="tag">ETL</span>
+    <span class="tag">SQL</span>
+
+  </div>
+</article>
+
+<!-- Data Analyst -->
+<article class="card interest">
+  <div class="title">Data Analyst</div>
+  <p class="desc">
+    Turning raw data into actionable insights with clear visualizations, reports, and statistical exploration for decision-making.
+  </p>
+  <div class="stack">
+    <span class="tag">Excel</span>
+    <span class="tag">Power BI</span>
+    <span class="tag">SQL</span>
+    <span class="tag">Python</span>
+    <span class="tag">Data Vizualisation</span>
+  </div>
+</article>
+      <article class="card interest">
+        <div class="title">Machine Learning Engineer</div>
+        <p class="desc">Training, evaluation, and deployment of ML models with solid data/serving pipelines.</p>
+        <div class="stack"><span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">FastAPI</span><span class="tag">MLOps</span></div>
+      </article>
+
+      <article class="card interest">
+        <div class="title">Software Engineering</div>
+        <p class="desc">Building reliable, polished user experiences with clean APIs and maintainable code.</p>
+        <div class="stack"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">SQL</span><span class="tag">Testing</span></div>
+      </article>
+    </div>
+  </div>
+</section>
 
   <!-- Languages -->
   <section id="languages" class="section">
@@ -726,15 +946,62 @@
     </div>
   </section>
 
-  <!-- Publications -->
-  <section id="publications" class="section">
-    <div class="container">
-      <h2 class="section-title">publications</h2>
-      <div class="card" style="padding:1.2rem">
-        <p><strong>Predicting Daily New Cases of COVID 19 Using Data Mining Techniques</strong>. SN Computer Science. Co authors: Sathishkumar V., Liza Ann Christian, Ng Phey Qee, Simran Kaur Chahal, Usha Moorthy.</p>
-      </div>
+<!-- Publications & Featured Work -->
+<section id="publications" class="section">
+  <div class="container">
+    <h2 class="section-title">publications & featured work</h2>
+    <div class="pub-grid">
+
+      <!-- Academic publication -->
+      <article class="card pub featured">
+        <h3 class="pub-title">Predicting Daily New Cases of COVID-19 Using Data Mining Techniques</h3>
+        <p class="pub-meta">Published in <em>SN Computer Science</em></p>
+        <p class="pub-authors">
+          Co-authors: Sathishkumar V., Liza Ann Christian, Ng Phey Qee, Simran Kaur Chahal, Usha Moorthy
+        </p>
+      </article>
+     <!-- Article 2 -->
+<article class="card pub">
+  <h3 class="pub-title">Magazine Feature: Leadership as Director</h3>
+  <p class="pub-meta">Interview & Publication</p>
+  <p>Featured in a magazine interview highlighting my experience and insights as the Director of a student leadership body, where I shared perspectives on leadership, teamwork, and organizational growth.</p><br><br>
+  <a href="https://www.instagram.com/p/DN2VTFnwGHA/" target="_blank" rel="noopener" class="cta-button">
+    ▶ Link
+  </a>
+</article>
+<!-- Mental health video -->
+<article class="card pub">
+  <h3 class="pub-title">Anxiety Awareness Video Initiative</h3>
+  <p class="pub-meta">Echo Media Mental Health Campaign</p>
+  <p>Produced and edited a campaign video raising awareness on anxiety, supporting student mental health advocacy through impactful storytelling.<p><br>
+  <a href="https://www.youtube.com/watch?v=UBisGf1E0Ao&embeds_referring_euri=https%3A%2F%2Fsunwayechomedia.com%2F&source_ve_path=Mjg2NjY" target="_blank" rel="noopener" class="cta-button">
+    ▶ Watch on YouTube
+  </a>
+</article>
+
+<!-- Article 1 -->
+<article class="card pub">
+  <h3 class="pub-title">Exhibit Review</h3>
+  <p class="pub-meta">Written contribution</p>
+  <p>Authored a published review offering critical insights on the Attack on Titan exhibition at Fahrenheit 88, Kuala Lumpur.</p><br><br>
+  <a href="https://sunwayechomedia.com/2024/06/17/attack-on-titan-exhibit-review/" target="_blank" rel="noopener" class="cta-button">
+    Read Article
+  </a>
+</article>
+
+<!-- Article 2 -->
+<article class="card pub">
+  <h3 class="pub-title">Event Feature: Bruno Mars Live in Kuala Lumpur</h3>
+  <p class="pub-meta">Written contribution</p>
+  <p>Covered and published an event feature capturing the energy, highlights, and audience experience of Bruno Mars’ 2024 concert in Kuala Lumpur.</p><br><br>
+  <a href="https://sunwayechomedia.com/2024/10/17/bruno-mars-kuala-lumpur-2024-the-day-magic-was-truly-in-the-air/" target="_blank" rel="noopener" class="cta-button">
+    Read Article
+  </a>
+</article>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Contact -->
   <footer id="contact">
@@ -812,8 +1079,84 @@
       addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;addTrail(tx,ty)});
       (function loop(){x+=(tx-x)*0.2;y+=(ty-y)*0.2;cursor.style.transform=`translate(${x-10}px,${y-10}px)`;requestAnimationFrame(loop)})();
     })();
+    document.querySelectorAll('#interestChips .chip').forEach(chip=>{
+  chip.addEventListener('click',()=> chip.classList.toggle('active'));
+});
+   (() => {
+  const slider = document.querySelector('#extra-photos .slider');
+  if (!slider) return;
 
-    /* ========= Project filter chips ========= */
+  const track = slider.querySelector('.track');
+  const slides = Array.from(track.children);
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
+  const dotsWrap = slider.querySelector('.dots');
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Go to slide ${i+1}`);
+    b.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(b);
+  });
+
+  let index = 0;
+  const dots = Array.from(dotsWrap.children);
+
+  function update(){
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+  }
+
+  function goTo(i){
+    index = (i + slides.length) % slides.length;
+    update();
+  }
+
+  prevBtn.addEventListener('click', () => goTo(index - 1));
+  nextBtn.addEventListener('click', () => goTo(index + 1));
+
+  // Swipe (touch) support
+  let startX = 0, dx = 0, dragging = false;
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX; dragging = true;
+  }, {passive:true});
+  track.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    dx = e.touches[0].clientX - startX;
+    // optional: visual drag — small translate
+    track.style.transform = `translateX(calc(-${index*100}% + ${dx}px))`;
+  }, {passive:true});
+  track.addEventListener('touchend', () => {
+    dragging = false;
+    if (Math.abs(dx) > 60) { goTo(index + (dx < 0 ? 1 : -1)); } else { update(); }
+    dx = 0;
+  });
+
+  // Keyboard
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  goTo(index - 1);
+    if (e.key === 'ArrowRight') goTo(index + 1);
+  });
+  slider.setAttribute('tabindex', '0');
+
+  // Autoplay (pauses on hover/focus)
+  const autoplay = slider.getAttribute('data-autoplay') === 'true';
+  const interval = parseInt(slider.getAttribute('data-interval') || '3500', 10);
+  let timer = null;
+
+  function start(){ if (autoplay) timer = setInterval(()=> goTo(index+1), interval); }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+  slider.addEventListener('focusin',  stop);
+  slider.addEventListener('focusout', start);
+
+  // init
+  update(); start();
+})();
+ /* ========= Project filter chips ========= */
     (() => {
       const grid=document.getElementById('projectGrid');
       const chips=[...document.querySelectorAll('#projectFilters .chip')];
